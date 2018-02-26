@@ -1,5 +1,4 @@
-/* WATS 3020 Browser Game project */
-/* Build a tic tac toe game for two players. */
+
 
 // TODO: Create a class called `Player`. The `constructor()` should look for a
 // parameter called `token` and should set `this.token` as a property of
