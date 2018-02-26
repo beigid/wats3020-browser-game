@@ -1,47 +1,54 @@
-
-
-// TODO: Create a class called `Player`. The `constructor()` should look for a
-// parameter called `token` and should set `this.token` as a property of
-// the class.
+// Creates a class called player with parameter "token"
+class Player {
+  constructor(token) {
+  this.token = token;
+  }
+}
 
 
 // Tic Tac Toe Game Class
 class TicTacToe {
     constructor(){
-        // TODO: Set up `this.player1` and `this.player2` properties.
-        // These properties should be new Player class instances.
-        // You may set the "token" to anything that corresponds to a Glyphicon
-        // icon name ('heart', 'star', 'remove-sign', 'unchecked', 'bell',
-        // 'certificate', etc.)
+        this.player1 = new Player ("remove-sign"); //Set this.player1 to new Player class. Token set as remove sign to match icon
+        this.player2 = new Player ("unchecked"); //Set this.player2 to new Player class. Token set as remove sign to match icon
+       
+// Properties initialized that will be used to track game progress
+        
+        // Set `this.currentPlayer` equal to `null`
+        this.currentPlayer = null;
+        
+        // Set `this.gameStatus` equal to `null`
+        this.getStatus = null;
+        
+        // Set `this.winner` equal to `null`
+        this.winner = null;
+        
+         // Set `this.moveCount` equal to `0`
+         this.moveCount = 0;
 
+//Setting up DOM elements used in game as Class properties
 
-        // TODO: Initialize several  properties that will be used to track game
-        // progress.
+        // Set `this.startPrompt` equal to the `#start-prompt` element
+        this.startPrompt = document.querySelector("#start-prompt");
+        
+        // Set `this.movePrompt` equal to the `#move-prompt` element
+        this.movePrompt = document.querySelector("#move-prompt");
+        
+        // Set `this.currentPlayerToken` equal to the `#player-token` element
+        this.currentPlayerToken = document.querySelector("#player-token");
+      
+        // Set `this.gameboard` equal to the `#gameboard` element
+        this.gameboard = document.querySelector("#gameboard");
 
-        // TODO: Set `this.currentPlayer` equal to `null`
+        // Set `this.winScreen` equal to the `#win-screen` element
+        this.winScreen = document.querySelector("#win-screen");
 
-        // TODO: Set `this.gameStatus` equal to `null`
-
-        // TODO: Set `this.winner` equal to `null`
-
-        // TODO: Set `this.moveCount` equal to `0`
-
-        // TODO: Set up DOM elements used in game as Class properties
-
-        // TODO: Set `this.startPrompt` equal to the `#start-prompt` element
-
-        // TODO: Set `this.movePrompt` equal to the `#move-prompt` element
-
-        // TODO: Set `this.currentPlayerToken` equal to the `#player-token` element
-
-        // TODO: Set `this.gameboard` equal to the `#gameboard` element
-
-        // TODO: Set `this.winScreen` equal to the `#win-screen` element
-
-        // TODO: Set `this.winnerToken` equal to the `#winner-token` element
-
-        // TODO: Set `this.drawScreen` equal to the `#draw-screen` element
-
+        // Set `this.winnerToken` equal to the `#winner-token` element
+        this.winnerToken = document.querySelector("#winner-token");
+      
+        // Set `this.drawScreen` equal to the `#draw-screen` element
+        this.drawScreen = document.querySelector("#draw-screen");
+      
         // Initialize an Array representing the starting state of the game board.
         // This is provided for you. We can access the spaces on the board using
         // (X, Y) coordinates as `this.gameState[x][y]`, which is how the game
@@ -230,39 +237,44 @@ class TicTacToe {
     start(){
         // This method handles the logic to create a new game. It primarily has
         // two duties in the basic version of the game:
+        
+        // Create a new gameboard by calling `this.setUpBoard`
+        this.setUpBoard();
 
-        // TODO: Create a new gameboard by calling `this.setUpBoard`
-
-        // TODO: Initialize the move prompt by calling `this.initializeMovePrompt`.
-
+        // Initialize the move prompt by calling `this.initializeMovePrompt`.
+        this.initializeMovePrompt();
     }
 } // End of the Tic Tac Toe Class definition.
 
 // Outside of the Class definitions, we need a few items to control the game
 // so our players can successfull play.
 
-// TODO: Add an event listener to the `document` object that will watch for the
-// "DOMContentLoaded" event signal. This listener should execute an anonymous
-// function to handle the "DOMContentLoaded" event.
+// Add an event listener to the `document` object that will watch for the "DOMContentLoaded" event signal. This listener should execute an anonymous 
+//function to handle the "DOMContentLoaded" event.
 
-    // TODO: Inside the "DOMContentLoaded" event handler, perform the following
-    // steps:
+let game; //initialize game variable 
 
-    // TODO: Select the `#start-button` element from the DOM and save it as a
-    // variable called `startButton`.
+    // Select the `#start-button` element from the DOM and save it as a variable called `startButton`.
+    document.addEventListener("DOMContentLoaded", function(event) {
+    let startButton = document.querySelector("#start-button");
 
-    // TODO: Create an event listener on the `startButton` element that listens for
-    // a "click" event and executes an anonymous function to start the game.
+    //  Create an event listener on the `startButton` element that listens for a "click" event and executes an anonymous function to start the game.
 
-        // TODO: Inside the `startButton` event listener, instantiate a new
-        // instance of the `TicTacToe` class and save it as a variable called
-        // `game`.
-
-        // TODO: Call the `start()` method of the `game` object you just created.
+    startButton.addEventListener("click", function (event){
+      
+       // Inside the `startButton` event listener, instantiate a new instance of the `TicTacToe` class and save it as a variable called `game`.
+    game = new TicTacToe();
+        
+      // Call the `start()` method of the `game` object you just created.
+      game.start();
+    })
 
     // NOTE: End of the `startButton` event listener here.
 
 // NOTE: End of the "DOMContentLoaded" event listener here.
+});
+
+
 
 
 // TODO: Add an event listener on the `document` object that listens for the
